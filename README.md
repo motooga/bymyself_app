@@ -1,24 +1,69 @@
-# README
+# アプリケーション名
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+BYMYSELF
 
-Things you may want to cover:
+# アプリケーション概要
 
-* Ruby version
+子どもの自立をサポートするアプリ
 
-* System dependencies
+親：お手伝いや宿題を習慣化して親のストレスを軽減させる
 
-* Configuration
+子：つまらないはずのお手伝いや宿題をすすんでしたくなる
 
-* Database creation
+# URL
 
-* Database initialization
+# テスト用アカウント
 
-* How to run the test suite
+# 利用方法
+## 親
+### 子どもへのタスクの設定
+1. 子ども一覧画面からタスクを依頼するこどもを選択
 
-* Services (job queues, cache servers, search engines, etc.)
+2. 子どもの詳細ページからタスク依頼ボタンをクリックしてタスク依頼画面に遷移する
 
-* Deployment instructions
+3. タスクの内容（タスク名・カテゴリー・スケジュール・設定ポイント）を入力するとタスクを投稿できる
 
-* ...
+### タスク完了報告から報酬の付与
+1. 子どもがタスク完了ボタンを押すと親ユーザー画面に報酬付与ボタンが出現する
+2. 報酬付与ボタンをクリックして報酬を付与することができる
+
+## 子
+### タスクの報告
+1. トップ画面に本日のタスク一覧が表示されるので実行するタスクをクリックすると依頼の内容が確認できる
+2. タスクが完了したらタスク完了ボタンをクリックすると親へタスク完了連絡が自動でいく
+3. タスクに対してコメントがあるときはタスクの詳細ページから確認し返信できる
+
+### ランキング機能
+全子どもユーザー中どれくらいポイントを持っているかの一覧が確認できる
+
+# アプリケーションを作成した背景
+
+実際に子育てをしている中で、子どもが楽しくお手伝いや宿題を自主性を持っておこなえるようするにはどうしたらいいかを考えていた。
+
+お手伝いをしたり宿題をしているのは自分だけで、自分だけが大変だと感じている幼い子どもに対して、仲間がいて、自分の実績が視える化できたらやる気につながるのではないかと考えた。
+
+そこでやったお手伝いの履歴やもらったお小遣いを視える化できるよアプリケーションを開発することとした。
+
+# 実装した機能についての画像やGIFおよびその説明
+
+鋭意作成中
+
+# 実装予定の機能
+
+現在ユーザー機能を実装中
+
+# データベース設計
+
+[![Image from Gyazo](https://i.gyazo.com/534aaf0d26e9522dfe9697f372daf2bb.png)](https://gyazo.com/534aaf0d26e9522dfe9697f372daf2bb)
+
+# 画面遷移図
+
+[![Image from Gyazo](https://i.gyazo.com/fe562f71d764b8f004d2cfdbc4625c77.png)](https://gyazo.com/fe562f71d764b8f004d2cfdbc4625c77)
+
+# 開発環境
+* Ruby
+* Ruby on Rails
+* MySQL
+* Github
+* Render
+* Visual Studio Code
