@@ -1,3 +1,16 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get 'home/index'
+  devise_for :families, controllers: {
+    sessions:      'families/sessions',
+    passwords:     'families/passwords',
+    registrations: 'families/registrations'
+  }
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
+
+  root to: 'home#index'
 end

@@ -54,7 +54,7 @@ BYMYSELF
 
 # データベース設計
 
-[![Image from Gyazo](https://i.gyazo.com/534aaf0d26e9522dfe9697f372daf2bb.png)](https://gyazo.com/534aaf0d26e9522dfe9697f372daf2bb)
+[![Image from Gyazo](https://i.gyazo.com/25f2c4d745c7577df7357518b728b987.png)](https://gyazo.com/25f2c4d745c7577df7357518b728b987)
 
 # 画面遷移図
 

@@ -55,6 +55,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'net-http'
 gem 'pry-rails'
 gem 'devise'
+gem 'bootstrap', '~> 5.0.2'
+gem 'active_hash'
 
 group :production do
   gem 'pg'
