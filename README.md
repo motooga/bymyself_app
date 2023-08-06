@@ -11,6 +11,7 @@ BYMYSELF
 子：つまらないはずのお手伝いや宿題をすすんでしたくなる
 
 # URL
+https://bymyself-app.onrender.com
 
 # テスト用アカウント
 
