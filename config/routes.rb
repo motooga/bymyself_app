@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   get 'home/index'
+  namespace :families do
+    resources :users
+  end
+  
   devise_for :families, controllers: {
     sessions:      'families/sessions',
     passwords:     'families/passwords',
@@ -11,6 +15,6 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-
+  
   root to: 'home#index'
 end

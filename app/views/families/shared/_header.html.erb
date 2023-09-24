@@ -9,8 +9,8 @@
                 <%= image_tag 'logo_text.png', class: "logo" %>
               </a>
             </div>
-           <% if family_signed_in? %>
-           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
               <a href="#" class="nav-link text-dark">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
@@ -47,23 +47,13 @@
               </a>
             </li>
            </ul>
-          <% else %>
-          <% end %> 
+           
 
         </div>
-            
-            <% if family_signed_in? %>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <%= link_to "ログアウト", destroy_family_session_path, method: :DELETE, class: "btn btn-outline-dark" %>
-            </div>
-            <% else %>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <%= link_to "ユーザーログイン", user_session_path, class: "btn btn-outline-dark" %>
-              <%= link_to "親ログイン", new_family_session_path, class: "btn btn-outline-dark" %>
-              <%= link_to "親アカウント登録", new_family_registration_path, class: "btn btn-warnin" %>
-            </div>
-            <% end %>
-         
+              <button type="button" class="btn btn-outline-dark"><a href="" >ログイン</a></button>
+              <button type="button" class="btn btn-warning">とうろく</button>
+           </div>
       </div>
     </div>
 
