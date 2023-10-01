@@ -1,19 +1,27 @@
 # frozen_string_literal: true
 
 class Families::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  include Accessible
+    skip_before_action :check_user, except: [:new, :create]
+    before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
+  #  def new
   #   super
-  # end
+  #  end
 
   # POST /resource
   # def create
-  #   super
+  #   super 
   # end
 
+   private
+
+   def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :family_name])
+  end
+  
   # GET /resource/edit
   # def edit
   #   super

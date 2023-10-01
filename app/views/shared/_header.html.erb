@@ -5,9 +5,19 @@
       <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <div class="logo_area">
-              <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                <%= image_tag 'logo_text.png', class: "logo" %>
-              </a>
+            <% if user_signed_in? %>
+              <%= link_to(root_path, class: "d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none") do %>
+              <%= image_tag('logo_text.png', class: "logo") %>
+            <% end %>
+            <% elsif family_signed_in? %>
+              <%= link_to(families_path, class: "d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none") do %>
+              <%= image_tag('logo_text.png', class: "logo") %>
+            <% end %>
+            <% else %>
+              <%= link_to(root_path, class: "d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none") do %>
+              <%= image_tag('logo_text.png', class: "logo") %>
+            <% end %>
+            <% end %>
             </div>
            <% if family_signed_in? %>
            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
@@ -53,9 +63,13 @@
         </div>
             
             <% if family_signed_in? %>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <%= link_to "ログアウト", destroy_family_session_path, method: :DELETE, class: "btn btn-outline-dark" %>
-            </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+               <%= link_to "ログアウト", destroy_family_session_path, method: :DELETE, class: "btn btn-outline-dark" %>
+              </div>
+            <% elsif user_signed_in? %>
+             <div class="d-grid gap-2 d-md-flex justify-content-md-end"> 
+              <%= link_to "ユーザーログアウト", destroy_user_session_path, method: :DELETE, class: "btn btn-outline-dark" %>
+             </div>
             <% else %>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
               <%= link_to "ユーザーログイン", user_session_path, class: "btn btn-outline-dark" %>
