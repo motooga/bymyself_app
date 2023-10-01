@@ -7,7 +7,7 @@ class DeviseCreateFamilies < ActiveRecord::Migration[6.0]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :family_name,        null: false
-      t.references :user, null: false
+
 
 
       ## Recoverable

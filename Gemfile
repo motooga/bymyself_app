@@ -57,6 +57,7 @@ gem 'pry-rails'
 gem 'devise'
 gem 'bootstrap', '~> 5.0.2'
 gem 'active_hash'
+gem 'cancancan'
 
 group :production do
   gem 'pg'

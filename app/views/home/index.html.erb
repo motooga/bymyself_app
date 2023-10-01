@@ -4,13 +4,24 @@
   <section class="py-3 text-center container">
     <div class="row py-lg-2">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">きょうのおしごと</h1>
-        
+        <h1 class="fw-light">きょうのにんむ</h1>
       </div>
     </div>
+        <% if family_signed_in? %>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <%= link_to "こどもの登録", new_user_registration_path, class: "btn btn-outline-dark" %>
+          </div>
+          <%= "こんにちは、" %>
+            <%= link_to "#{current_family.family_name}さん", family_path(current_family.id), class: :greeting__link%>
+        <% end %>
+      
   </section>
 
 <%# 今日の依頼タスク一覧 %>
+        <% if user_signed_in? %>
+          <%= "こんにちは、" %>
+          <%= link_to "#{current_user.nickname}さん", '#', class: :greeting__link%>
+        <% end %>
   <ul class='task-lists'>
     <%# if Task.exists? %>
       <%# @tasks.each do |task| %>
