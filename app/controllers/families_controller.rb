@@ -10,5 +10,6 @@ class FamiliesController < ApplicationController
     authenticate_family!
     @family = Family.find(params[:id])
     @users = current_family.users
+    @user = User.find(params[:id])
   end
 end

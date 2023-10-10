@@ -1,0 +1,58 @@
+<div class="container">
+  <body class="d-flex align-items-center py-4 bg-body-tertiary">
+   <main class="form-task w-100 m-auto">
+
+   <%= "#{@user.nickname}への仕事の依頼"%>
+
+      <form
+        method="POST"
+        class="w-100 rounded-1 p-4 border bg-white"
+      >
+        <label class="d-block mb-4">
+          <span class="form-label d-block">依頼する仕事</span>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            placeholder="Joe Bloggs"
+          />
+        </label>
+
+        <label class="d-block mb-4">
+          <span class="form-label d-block">お仕事カテゴリー</span>
+          <input
+            name="people"
+            type="number"
+            class="form-control"
+            placeholder="1"
+          />
+        </label>
+
+        <label class="d-block mb-4">
+          <span class="form-label d-block">お手伝いポイント</span>
+          <input
+            name="people"
+            type="number"
+            class="form-control"
+            placeholder="1"
+          />
+        </label>
+
+        <label class="d-block mb-4">
+          <span class="form-label d-block">スケジュール</span>
+          <input name="datetime" type="datetime-local" class="form-control" />
+        </label>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button type="submit" class="btn btn-dark px-3 rounded-3">
+            依頼する
+          </button>
+        </div>
+
+        
+        </div>
+      </form>
+    </div>
+  </main>
+  </body>
+</div>

@@ -13,7 +13,7 @@
   <main class="form-signin w-100 m-auto">
     <%= form_with model: @family, url: new_family_session_path, id: "new_family" , class: "text-center" ,  local: true do |f| %>
 
-      <%= link_to image_tag("logo_set.png", class: :logo), root_path %>
+      <%= link_to image_tag("logo_set.png", class: :logo), families_path %>
      <h1 class="h3 mb-3 fw-normal">sign in</h1>
       <%= render "families/shared/error_messages", resource: resource %>
 

@@ -20,7 +20,7 @@
 <%# 今日の依頼タスク一覧 %>
         <% if user_signed_in? %>
           <%= "こんにちは、" %>
-          <%= link_to "#{current_user.nickname}さん", '#', class: :greeting__link%>
+          <%# <%= link_to "#{current_user.nickname}さん", family_user_path(family_id: @family.id, user_id: current_user.id), class: :greeting__link%> 
         <% end %>
   <ul class='task-lists'>
     <%# if Task.exists? %>

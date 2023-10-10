@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_25_221043) do
+ActiveRecord::Schema.define(version: 2023_10_04_210644) do
 
   create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(version: 2023_07_25_221043) do
     t.index ["user_id"], name: "index_statuses_on_user_id"
   end
 
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "status_id", null: false
+    t.string "taskname", null: false
+    t.integer "category_id", null: false
+    t.integer "schedule_id", null: false
+    t.integer "point", null: false
+    t.bigint "user_id", null: false
+    t.bigint "family_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["family_id"], name: "index_tasks_on_family_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -49,4 +63,6 @@ ActiveRecord::Schema.define(version: 2023_07_25_221043) do
   end
 
   add_foreign_key "statuses", "users"
+  add_foreign_key "tasks", "families"
+  add_foreign_key "tasks", "users"
 end

@@ -20,7 +20,7 @@
       <h2 class="page-heading">
         <%= "#{@family.family_name}さんのこども"%>
         <% @users.each do |user| %>
-          <p><%= user.nickname %></p>
+          <p><%= link_to user.nickname, family_user_path(@family, user) %></p>
          <% end %>
       </h2>
         

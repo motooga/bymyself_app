@@ -13,9 +13,9 @@
     </div>
   </section>
 
-        <% if user_signed_in? %>
+        <% if family_signed_in? %>
           <%= "こんにちは、" %>
-          <%= link_to "#{@user.nickname}さん", '#', class: :greeting__link%>
+          <%= link_to "#{current_family.family_name}さん", family_path(current_family.id), class: :greeting__link%>
         <% end %>
 
 <%# 子ども一覧  %>
