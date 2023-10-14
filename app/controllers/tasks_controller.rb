@@ -11,7 +11,14 @@ class TasksController < ApplicationController
   def create
     @family = current_family
     set_user
-    Task.create(task_params)
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to families_path
+    else
+      render :new
+    end
+
+
   end
 
  private
@@ -21,6 +28,6 @@ class TasksController < ApplicationController
   @user = @family.users.find(params[:user_id])
 end
  def task_params
-  params.require(:task).permit(:taskname, :category_id, :point, :schedule_id).merge(family_id: @family.id, user_id: @user.id)
+  params.require(:task).permit(:taskname, :category_id, :point, :schedule_id, :status_id).merge(family_id: @family.id, user_id: @user.id)
  end
 end

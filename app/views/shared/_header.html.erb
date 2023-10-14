@@ -7,16 +7,16 @@
             <div class="logo_area">
             <% if user_signed_in? %>
               <%= link_to(root_path, class: "d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none") do %>
-              <%= image_tag('logo_text.png', class: "logo") %>
-            <% end %>
+               <%= image_tag('logo_text.png', class: "logo") %>
+              <% end %>
             <% elsif family_signed_in? %>
               <%= link_to(families_path, class: "d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none") do %>
-              <%= image_tag('logo_text.png', class: "logo") %>
-            <% end %>
+               <%= image_tag('logo_text.png', class: "logo") %>
+              <% end %>
             <% else %>
               <%= link_to(root_path, class: "d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none") do %>
-              <%= image_tag('logo_text.png', class: "logo") %>
-            <% end %>
+               <%= image_tag('logo_text.png', class: "logo") %>
+              <% end %>
             <% end %>
             </div>
            <% if family_signed_in? %>
