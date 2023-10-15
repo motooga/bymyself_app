@@ -27,9 +27,13 @@
         <%= task.schedule.name %>
       </div>
     </div>
-  <%# <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <%= link_to "承認", new_family_user_task_path(family_id: @user.family_id, user_id: @user.id ), class: "btn btn-outline-dark" %>
-  <%# </div> %> 
+    <% if task.status_id == 0 %>
+      <%= link_to "ほうこく！", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 1 }), method: :patch, remote: true, class: "btn btn-outline-dark" %>
+    <% elsif task.status_id == 1 %>
+      <%= link_to "承認", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 2 }), method: :patch, remote: true, class: "btn btn-outline-dark" %>
+
+    <% end %>
+  </div> 
   </div>
 
 

@@ -14,7 +14,7 @@
       </table>
       
       <%# 仕事一覧 %>
-      <%= render partial: 'task', collection: @tasks %>
+      <%= render partial: 'task', collection: @tasks.select { |task| [0, 1].include?(task.status_id)} %>
 
       <% if family_signed_in? %>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
