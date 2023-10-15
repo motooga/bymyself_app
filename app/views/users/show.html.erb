@@ -10,15 +10,17 @@
             <th class="table__col1">名前</th>
             <td class="table__col2"><%= @user.nickname %></td>
           </tr>
-
-          
-          
         </tbody>
       </table>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <%= link_to "お手伝いを頼む", new_family_user_task_path(family_id: @user.family_id, user_id: @user.id ), class: "btn btn-outline-dark" %>
-              
-            </div>
+      
+      <%# 仕事一覧 %>
+      <%= render partial: 'task', collection: @tasks %>
+
+      <% if family_signed_in? %>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <%= link_to "お手伝いを頼む", new_family_user_task_path(family_id: @user.family_id, user_id: @user.id ), class: "btn btn-outline-dark" %>
+        </div>
+      <% end %>
           
 
       <% if family_signed_in? %>

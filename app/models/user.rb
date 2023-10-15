@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true, uniqueness: true 
   belongs_to :family
-
+  has_many :tasks
   def email_required?
     false
   end

@@ -8,4 +8,5 @@ class Family < ApplicationRecord
          validates :family_name, presence: true
 
          has_many :users, dependent: :destroy
+         has_many :tasks
 end
