@@ -2,19 +2,19 @@
   <div class="upper-task">
 
     <div class="task-name">
-      <%= link_to task.taskname , family_user_tasks_path(family_id: @user.family_id, user_id: @user.id ,tasks_id: task.id) %>
+      <%= link_to task.taskname , family_user_task_path(family_id: @user.family_id, user_id: @user.id ,id: task.id) %>
     </div>
 
     <div class="task-offer-date">
       <div>頼んだ日：
-        <%= task.created_at %>
+        <%= l task.created_at %>
       </div>
     </div>
 
     <div class="task-done-date">
       <% if task.updated_at != task.created_at%>
         <div>完了日：
-          <%= task.updated_at %>
+          <%= l task.updated_at %>
         </div>
       <% end %>
     </div>
@@ -27,6 +27,9 @@
         <%= task.schedule.name %>
       </div>
     </div>
+  <%# <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <%= link_to "承認", new_family_user_task_path(family_id: @user.family_id, user_id: @user.id ), class: "btn btn-outline-dark" %>
+  <%# </div> %> 
   </div>
 
 
