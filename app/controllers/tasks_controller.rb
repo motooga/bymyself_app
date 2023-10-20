@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_family!, except: [:update]
-  before_action :authenticate_access
+  before_action :authenticate_access,only: [:update]
 
   def new
     @task = Task.new
@@ -26,8 +26,8 @@ class TasksController < ApplicationController
   end
 
   def update
-    binding.pry
     authenticate_access
+    head :no_content
   end
  private
 
