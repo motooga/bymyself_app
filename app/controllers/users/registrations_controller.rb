@@ -25,11 +25,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
        end
 
     end
-
-    
-    
   end
 
+  def after_sign_up_path_for(resource)
+    root_path
+  end
   
   # #  GET /resource/sign_up
   #      def new
@@ -49,11 +49,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # def configure_permitted_parameters
       #  devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :password, :password_confirmation, :family_id])
       # end
-
-     
-
-
-      
 
   #  GET /resource/edit
   #  def edit

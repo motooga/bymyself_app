@@ -23,11 +23,9 @@
       <% end %>
           
 
-      <% if family_signed_in? %>
-          <%= link_to 'トップページ', families_path %>
-      <% elsif user_signed_in? %>
-          <%= link_to 'トップページ', root_path %>
-      <% end %>
+      
+      <%= link_to 'トップページ', root_path %>
+
 
 
     </div>

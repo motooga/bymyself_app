@@ -13,30 +13,21 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  resources :families ,only: [:show, :index] do 
+  resources :families ,only: [:show] do 
     resources :users ,only: [:show] do
       resources :tasks
     end
   end
-   root to: 'home#index'
+  root to: 'home#index'
 
-   devise_scope :user do
+  devise_scope :user do
     authenticated :user do
-      root 'users#show', as: :authenticated_user_root
+      root 'home#index', as: :authenticated_user_root
     end
   
     unauthenticated do
-      root 'home#index', as: :unauthenticated_user_root
+      root 'home#index', as: :unauthenticated_root
     end
   end
-  
-  devise_scope :family do
-    authenticated :family do
-      root 'families#index', as: :authenticated_family_root
-    end
-  
-    unauthenticated do
-      root 'home#index', as: :unauthenticated_family_root
-    end
-  end
+
 end

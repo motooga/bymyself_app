@@ -28,6 +28,13 @@ class Families::SessionsController < Devise::SessionsController
     def configure_sign_in_params
       devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
     end
+    
+    def check_user
+      if family_signed_in?
+        flash.clear
+        redirect_to root_path
+      end
+    end
 
     # def sign_in_params
     #  params.require(:family).permit(:email, :password, :remember_me)

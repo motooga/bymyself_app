@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     set_user
     @task = Task.new(task_params)
     if @task.save
-      redirect_to families_path
+      redirect_to root_path
     else
       render :new
     end

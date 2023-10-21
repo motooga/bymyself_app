@@ -1,6 +1,7 @@
 function taskchange () {
    console.log("承認ボタン非同期での処理実装");
  };
+
 //   $(".update-button").on("click", function() {
 //     var taskId = $(this).data("task-id");
 //     var statusId = $(this).data("status-id");
@@ -21,3 +22,5 @@ function taskchange () {
 //     });
 //   });
 // };
+
+window.addEventListener('load', taskchange);
