@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("../taskchange")
+require("../changestatus")
 import "bootstrap"
 import "../stylesheets/application"
 

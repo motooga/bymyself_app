@@ -1,0 +1,46 @@
+<div class="task">
+  <div class="upper-task">
+
+    <div class="task-name">
+      <%= link_to task.taskname , family_user_task_path(family_id: @user.family_id, user_id: @user.id ,id: task.id) %>
+    </div>
+
+    <div class="task-offer-date">
+      <div>頼んだ日：
+        <%= l task.created_at %>
+      </div>
+    </div>
+
+    <div class="task-done-date">
+      <% if task.updated_at != task.created_at%>
+        <div>完了日：
+          <%= l task.updated_at %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="lower-task">
+    <div class="task-schedule">
+      <div>スケジュール：
+        <%= task.schedule.name %>
+      </div>
+    </div>
+    <% if task.status_id == 0 %>
+      <% if user_signed_in? %>
+        <%= link_to "ほうこく！", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 1 }), method: :patch, remote: true, class: "btn btn-outline-dark satuschange" ,
+        data: { 'task-id': task.id, 'new-status': 1 } %>
+      <% end %>
+    <% elsif task.status_id == 1 %>
+      <% if family_signed_in? %>
+        <%= link_to "承認", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 2 }), method: :patch, remote: true, class: "btn btn-outline-dark statuschange" ,
+        data: { 'task-id': task.id, 'new-status': 1 } %>
+      <% end %>
+    <% end %>
+  </div> 
+  </div>
+
+
+
+</div>

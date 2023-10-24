@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'tasks/new'
   get 'home/index'
-  
+    
   devise_for :families, controllers: {
     sessions:      'families/sessions',
     passwords:     'families/passwords',
@@ -12,6 +13,21 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  resources :families ,only: [:show, :index]
+  resources :families ,only: [:show] do 
+    resources :users ,only: [:show] do
+      resources :tasks
+    end
+  end
   root to: 'home#index'
+
+  devise_scope :user do
+    authenticated :user do
+      root 'home#index', as: :authenticated_user_root
+    end
+  
+    unauthenticated do
+      root 'home#index', as: :unauthenticated_root
+    end
+  end
+
 end

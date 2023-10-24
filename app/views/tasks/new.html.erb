@@ -1,0 +1,49 @@
+<div class="container">
+  <body class="d-flex align-items-center py-4 bg-body-tertiary">
+   <main class="form-task w-100 m-auto">
+<% if @task.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <%= "#{@user.nickname}への仕事の依頼"%>
+   <div class="form-horizontal" role="form">
+     <%= form_with model: @task, url:family_user_tasks_path, local: true do |f| %>
+       <div class="form-group d-block mb-4">
+        <%= f.label :taskname, 'お仕事名',{ class:'form-label d-block '} %>
+        <%= f.text_field :taskname,{class:'form-control',  placeholder:'ex:お風呂掃除' } %>
+       </div>
+       <div class="form-group d-block mb-4">
+        <%= f.label :category_id, '仕事の種類', class:'form-label d-block' %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:'form-control'}) %>
+       </div>
+       <div class="form-group d-block mb-4">
+        <%= f.label :point, 'お手伝いポイント', {class:'form-label d-block'} %>
+        <%= f.number_field :point , {in: 1..5000, step: 1 ,class: 'form-control' }%>
+       </div>
+       <div class="form-group d-block mb-4">
+        <%= f.label :schedule, 'スケジュール', {class:'form-label d-block'} %>
+        <%= f.collection_select(:schedule_id , Schedule.all, :id, :name, {}, {class: 'form-control'}) %>
+       </div>
+        <%= f.hidden_field :status_id, value: 0 %>
+       <div class="d-grid gap-2 col-6 mx-auto">
+         <%= f.submit "依頼する", class: 'btn btn-dark px-3 rounded-3' %>
+         <%= link_to '戻る', family_user_path(@family, @user), class: 'btn btn-outline-dark' %>
+        </div>
+
+
+        
+        </div>
+      </form>
+      <% end %>
+    </div>
+    
+  </main>
+  </body>
+</div>

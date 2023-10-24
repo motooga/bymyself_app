@@ -12,7 +12,10 @@ class Users::SessionsController < Devise::SessionsController
 
 #    POST /resource/sign_in
     def create
-      super
+      super do |resource|
+        family_id = resource.family_id
+        session[:family_id] = family_id
+      end
     end
 
 
@@ -28,4 +31,12 @@ class Users::SessionsController < Devise::SessionsController
    def configure_sign_in_params
      devise_parameter_sanitizer.permit(:sign_in, keys: [:nickname, :password, :remember_me])
    end
+
+  #  def after_sign_in_path_for(resource)
+  #   if resource.family.present? && resource.id.present?
+  #     family_user_path(family_id: resource.family.id, id: resource.id)
+  #   else
+  #     root_pat
+  #   end
+  #  end
 end

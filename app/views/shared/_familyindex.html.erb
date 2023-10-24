@@ -1,4 +1,3 @@
-<%= render "shared/header" %>
 <main>
 
   <section class="py-3 text-center container">
@@ -13,16 +12,16 @@
     </div>
   </section>
 
-        <% if user_signed_in? %>
+        <% if family_signed_in? %>
           <%= "こんにちは、" %>
-          <%= link_to "#{@user.nickname}さん", '#', class: :greeting__link%>
+          <%= link_to "#{current_family.family_name}さん", family_path(current_family.id), class: :greeting__link%>
         <% end %>
 
 <%# 子ども一覧  %>
 
         <%= "#{@family.family_name}さんのこども"%>
         <% @users.each do |user| %>
-          <p><%= user.nickname %></p>
+          <p><%= link_to user.nickname, family_user_path(@family, user) %></p>
          <% end %>
 
         <div class='task-info'>
@@ -41,4 +40,4 @@
         <%# end %>
       </li>
       <%# end %>
-<%= render "shared/footer" %>
+</main>
