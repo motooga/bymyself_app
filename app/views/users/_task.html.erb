@@ -29,11 +29,13 @@
     </div>
     <% if task.status_id == 0 %>
       <% if user_signed_in? %>
-        <%= link_to "ほうこく！", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 1 }), method: :patch, remote: true, class: "btn btn-outline-dark" %>
+        <%= link_to "ほうこく！", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 1 }), method: :patch, remote: true, class: "btn btn-outline-dark satuschange" ,
+        data: { 'task-id': task.id, 'new-status': 1 } %>
       <% end %>
     <% elsif task.status_id == 1 %>
       <% if family_signed_in? %>
-        <%= link_to "承認", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 2 }), method: :patch, remote: true, class: "btn btn-outline-dark" %>
+        <%= link_to "承認", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 2 }), method: :patch, remote: true, class: "btn btn-outline-dark statuschange" ,
+        data: { 'task-id': task.id, 'new-status': 1 } %>
       <% end %>
     <% end %>
   </div> 
