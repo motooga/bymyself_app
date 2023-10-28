@@ -3,8 +3,10 @@
 set -o errexit
 
 bundle install
+yarn install
+yarn build
 bundle exec rake assets:precompile
-bundle exec rake assets:clean
+# bundle exec rake assets:clean
 # デプロイのデータベース関係でエラーがあったときは↓をコメントアウトしてコメントアウトになっているのを戻す
 bundle exec rake db:migrate
 # DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:migrate:reset
