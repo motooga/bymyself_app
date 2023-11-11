@@ -27,17 +27,26 @@
         <%= task.schedule.name %>
       </div>
     </div>
-    <% if task.status_id == 0 %>
-      <% if user_signed_in? %>
-        <%= link_to "ほうこく！", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 1 }), method: :patch, remote: true, class: "btn btn-outline-dark satuschange" ,
-        data: { 'task-id': task.id, 'new-status': 1 } %>
-      <% end %>
-    <% elsif task.status_id == 1 %>
-      <% if family_signed_in? %>
-        <%= link_to "承認", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 2 }), method: :patch, remote: true, class: "btn btn-outline-dark statuschange" ,
-        data: { 'task-id': task.id, 'new-status': 1 } %>
-      <% end %>
+
+  <% if task.status_id == 0 %> 
+    <% if user_signed_in? %>
+      <div data-task-id=<%= task.id %> class="statuschange-btn">
+        <%= render"users/taskstatus",task: task%>
+        <%# <button type="button" class="btn btn-danger">ほうこく！</button> %>
+      </div>
+      <%# <%= link_to "ほうこく！", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 1 }), method: :patch, remote: true, class: "btn btn-outline-dark statuschange" ,
+        data: { 'taskid': task.id, 'newstatus': 1, 'family-id': @user.family_id,'user-id': @user.id } %> %>
     <% end %>
+  <% elsif task.status_id == 1 %>
+    <% if family_signed_in? %>
+      <div data-task-id=<%= task.id %> class="statuschange-btn">
+        <%= render"users/taskstatus",task: task%>
+        <%# <%= link_to "承認", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 2 }), method: :patch, remote: true, class: "btn btn-outline-dark statuschange" ,
+        data: { 'taskid': task.id, 'newstatus': 2, 'family-id': @user.family_id, 'user-id': @user.id } %> %>
+      </div>
+    <% end %>
+  <% end %>
+
   </div> 
   </div>
 

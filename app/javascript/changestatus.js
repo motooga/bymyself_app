@@ -1,15 +1,16 @@
-function taskchange () {
+function changestatus () {
   const statusChangeButtons = document.querySelectorAll('.statuschange');
-
-  statusChangeButtons.forEach(button => {
-    button.addEventListener('click', function(event) {
+  // console.log("よみこみ成功！")
+  statusChangeButtons.forEach((btn) => {
+    btn.addEventListener('click', function(event) {
       event.preventDefault();
 
-      const taskId = button.getAttribute('data-task-id');
-      const newStatus = parseInt(button.getAttribute('data-new-status'));
-
+      const taskId = btn.getAttribute('data-taskid');
+      const newStatus = parseInt(btn.getAttribute('data-newstatus'));
+      const familyId = btn.getAttribute('data-family-id');
+      const userId = btn.getAttribute('data-user-id')
       // サーバーにAjaxリクエストを送信
-      fetch(`/families/${family_id}/users/${user_id}/tasks/${taskId}`, {
+      fetch(`/families/${familyId}/users/${userId}/tasks/${taskId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -18,11 +19,10 @@ function taskchange () {
         body: JSON.stringify({ task: { status_id: newStatus } })
       })
       .then(response => response.json())
+      .then((json) => console.log(json))
       .then(data => {
-        // サーバーからの応答を処理
         if (data.status === 'success') {
-          // 成功した場合の処理
-          location.reload(); // ページをリロードするか、UIを更新
+          btn.style.display = 'none';
         } else {
           // 失敗した場合の処理
           alert('エラーが発生しました。');
@@ -36,4 +36,4 @@ function taskchange () {
 };
 
 
-window.addEventListener('load', taskchange);
+window.addEventListener('load', changestatus);

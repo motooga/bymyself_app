@@ -26,18 +26,19 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task =Task.find(params[:id])
-    new_status = params.dig(:task, :status_id)
+    @task.reload unless @task.update(task_status_update_params)
+    # @task =Task.find(params[:id])
+    # new_status = params.dig(:task, :status_id)
 
-    if @task.update(status_id: new_status)
-      respond_to do |format|
-        format.json{render json: { status: 'success'}}
-      end
-    else
-      respond_to do |format|
-        format.json {render json: {status: 'error'}}
-      end
-    end
+    # if @task.update(status_id: new_status)
+    #   respond_to do |format|
+    #     format.json{render json: { status: 'success'}}
+    #   end
+    # else
+    #   respond_to do |format|
+    #     format.json {render json: {status: 'error'}}
+    #   end
+    # end
   end
  private
 
@@ -49,6 +50,11 @@ class TasksController < ApplicationController
  def task_params
   params.require(:task).permit(:taskname, :category_id, :point, :schedule_id, :status_id).merge(family_id: @family.id, user_id: @user.id)
  end
+
+ def task_status_update_params
+  params.require(:task).permit(:status_id)
+ end
+ 
 
 #  def authenticate_access
 #   @task = Task.find(params[:id])
