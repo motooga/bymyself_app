@@ -1,9 +1,0 @@
-<% if task.status_id == 0 %> 
-  <% if user_signed_in? %>
-    <button type="button" class="btn btn-danger">ほうこく！</button>
-  <% end %>
-<% elsif task.status_id == 1 %>
-  <% if family_signed_in? %>
-    <button type="button" class="btn btn-success">承認</button>
-  <% end %>
-<% end %>
