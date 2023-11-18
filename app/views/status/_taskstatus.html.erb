@@ -7,7 +7,9 @@
       <% end %>
     <% elsif task.status_id == 1 %>
       <% if family_signed_in? %>
+      <div id="task-status-change-<%=task.id%>">
         <%= link_to "承認", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 2 }), method: :patch, remote: true, class: "btn btn-outline-dark statuschange" ,
         data: { 'task-id': task.id, 'new-status': 2 } %>
+      </div>
       <% end %>
     <% end %>

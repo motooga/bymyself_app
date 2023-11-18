@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     set_user
     @task = Task.new(task_params)
     if @task.save
-      redirect_to root_path
+      redirect_to family_user_path(@family, @user)
     else
       render :new
     end
@@ -28,14 +28,11 @@ class TasksController < ApplicationController
   def update
     @task =Task.find(params[:id])
     new_status = params.dig(:task, :status_id)
-    respond_to do |format|
     if @task.update(status_id: new_status)
-        format.json{render json: { status: 'success'}}
-        format.js 
+      render json: { status: 'success' }
     else
-        format.json {render json: {status: 'error'}}
+      render json: { status: 'success' }
       end
-    end
   end
  private
 

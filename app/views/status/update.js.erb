@@ -1,1 +1,1 @@
-document.getElementById('#task-status-change-<%=task.id%>').html("<%= j(render partial: 'status/taskstatus', locals: {task: @task}) %>");
+document.getElementById('task-status-change-<%=task.id%>').innerhtml("<%= j(render partial: 'status/taskstatus', locals: {task: @task}) %>"
