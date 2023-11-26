@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2023_10_04_210644) do
 
-  create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "family_name", null: false
@@ -25,15 +25,7 @@ ActiveRecord::Schema.define(version: 2023_10_04_210644) do
     t.index ["reset_password_token"], name: "index_families_on_reset_password_token", unique: true
   end
 
-  create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "total_point", null: false
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_statuses_on_user_id"
-  end
-
-  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "status_id", null: false
     t.string "taskname", null: false
     t.integer "category_id", null: false
@@ -47,11 +39,12 @@ ActiveRecord::Schema.define(version: 2023_10_04_210644) do
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", default: "", null: false
     t.integer "family_id", null: false
+    t.integer "user_points", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -62,7 +55,6 @@ ActiveRecord::Schema.define(version: 2023_10_04_210644) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "statuses", "users"
   add_foreign_key "tasks", "families"
   add_foreign_key "tasks", "users"
 end
