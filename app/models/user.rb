@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :authentication_keys => [:nickname] 
 
   validates :nickname, presence: true, uniqueness: true 
+  validates :user_points, presence: true, uniqueness: true 
   belongs_to :family
   has_many :tasks
   def email_required?
