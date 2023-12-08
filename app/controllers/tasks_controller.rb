@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     set_user
     @task = Task.new(task_params)
     if @task.save
-      redirect_to root_path
+      redirect_to family_user_path(@family, @user)
     else
       render :new
     end
@@ -28,8 +28,8 @@ class TasksController < ApplicationController
   def update
     @task =Task.find(params[:id])
     new_status = params.dig(:task, :status_id)
-
     if @task.update(status_id: new_status)
+
       if new_status.to_i == 2
         @user = @task.user
         @user.update(user_points: @user.user_points + @task.point )
@@ -38,10 +38,8 @@ class TasksController < ApplicationController
         format.json{render json: { status: 'success'}}
       end
     else
-      respond_to do |format|
-        format.json {render json: {status: 'error'}}
+      render json: { status: 'success' }
       end
-    end
   end
  private
 

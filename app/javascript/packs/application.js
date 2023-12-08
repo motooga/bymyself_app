@@ -8,8 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require('jquery')
-require("../taskchange")
-require("../changestatus")
+require('changestatus')
 import "bootstrap"
 import "../stylesheets/application"
 

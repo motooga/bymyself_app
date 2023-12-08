@@ -27,6 +27,7 @@
         <%= task.schedule.name %>
       </div>
     </div>
+
     <% if task.status_id == 0 %>
       <% if user_signed_in? %>
         <%= link_to "ほうこく！", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 1 }), method: :patch, remote: true, class: "btn btn-outline-dark satuschange" ,
@@ -37,7 +38,23 @@
         <%= link_to "承認", family_user_task_path(user_id: @user.id, family_id: @user.family_id, id: task.id, task: { status_id: 2 }), method: :patch, remote: true, class: "btn btn-outline-dark statuschange" ,
         data: { 'task-id': task.id, 'new-status': 2 } %>
       <% end %>
+
+
+  <% if task.status_id == 0 %> 
+    <% if user_signed_in? %>
+      <div id="task-id=<%= task.id %>" class="change-btn">
+        <%= render"status/taskstatus",task: task%>
+      </div>
+
     <% end %>
+  <% elsif task.status_id == 1 %>
+    <% if family_signed_in? %>
+      <div id="task-id=<%= task.id %>" class="change-btn">
+        <%= render"status/taskstatus",task: task%>
+      </div>
+    <% end %>
+  <% end %>
+
   </div> 
   </div>
 
