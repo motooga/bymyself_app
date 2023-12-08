@@ -29,7 +29,14 @@ class TasksController < ApplicationController
     @task =Task.find(params[:id])
     new_status = params.dig(:task, :status_id)
     if @task.update(status_id: new_status)
-      render json: { status: 'success' }
+
+      if new_status.to_i == 2
+        @user = @task.user
+        @user.update(user_points: @user.user_points + @task.point )
+      end
+      respond_to do |format|
+        format.json{render json: { status: 'success'}}
+      end
     else
       render json: { status: 'success' }
       end
