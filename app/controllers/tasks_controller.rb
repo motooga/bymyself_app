@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     if @task.update(status_id: new_status)
       if new_status.to_i == 2
         @user = @task.user
-        @user.update(user_point: @user.user_point + @task.point )
+        @user.update(user_points: @user.user_points + @task.point )
       end
       respond_to do |format|
         format.json{render json: { status: 'success'}}
