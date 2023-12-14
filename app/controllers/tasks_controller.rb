@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :authenticate_family!, except: [:update]
+  before_action :authenticate_family!, except: [:update ,:show]
   # before_action :authenticate_access,only: [:update]
 
   def new
@@ -23,6 +23,8 @@ class TasksController < ApplicationController
   def show
     @tasks = Task.all
     @task = Task.find(params[:id])
+    @family = Task.find(params[:family_id])
+    @user = Task.find(params[:user_id])
   end
 
   def update
