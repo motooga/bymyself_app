@@ -23,6 +23,8 @@ class TasksController < ApplicationController
   def show
     @tasks = Task.all
     @task = Task.find(params[:id])
+    @family = Task.find(params[:family_id])
+    @user = Task.find(params[:user_id])
   end
 
   def update
