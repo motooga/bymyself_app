@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :authenticate_family!, except: [:update]
+  before_action :authenticate_family!, except: [:update ,:show]
   # before_action :authenticate_access,only: [:update]
 
   def new

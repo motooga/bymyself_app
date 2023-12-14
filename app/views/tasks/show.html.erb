@@ -1,0 +1,38 @@
+<%= render "shared/header" %>
+<div class="task">
+  <div class="upper-task">
+
+    <div class="task-name">
+      <%= @task.taskname %>
+    </div>
+    <div class="task-offer-date">
+      <div>頼んだ日：
+        <%= l @task.created_at %>
+      </div>
+    </div>
+
+    <div class="task-done-date">
+      <% if @task.status_id ==2 %>
+        <div>完了日：
+          <%= l @task.updated_at %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="task-reword">
+      <% if @task.status_id == 2 %>
+      <div>もらったポイント：
+      <% elsif @task.status_id != 2 %>
+      <div>もらえるポイント：
+      <% end %>
+        <%= @task.point %>
+    </div>
+
+  </div>
+
+  <div class="lower-task">
+    <div class="task-schedule">
+      スケジュール：<%= @task.schedule.name %>
+    </div>
+  </div>
+
